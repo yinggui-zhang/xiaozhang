@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    this is Thymeleaf page
+
+    <br>
+    接收后台返回的数据
+    <div th:text="${name}"></div>
+    <form>
+        <input th:value="${name}">
+    </form>
+
+    迭代数据
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>是否成年</td>
+        </tr>
+
+        <tr th:each="user:${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.sex}"></td>
+            <td th:if="${user.age>=18}">成年</td>
+            <td th:unless="${user.age>=18}">未成年</td>
+            <td th:text="${user.age}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
